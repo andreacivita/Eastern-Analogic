@@ -1,0 +1,95 @@
+<div class="container">
+
+  <div class="row PageHead">
+
+
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+        <h1 style="text-align:center;"> Gestione dei Componenti </h1>
+          <br>
+          <br>
+          <div class="<?php if (isset ($this->class))
+                echo $this->class;
+          else
+              echo "alert alert-hidden"; ?>" id="messaggio">
+              <strong><?php echo $this->strong; ?> </strong><?php echo $this->msg; ?>
+          </div>
+          <br>
+          <br>
+          <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                   <td>Marca</td>
+                   <td>Modello</td>
+                   <td>Visualizza Componente</td>
+                   <td>Modifica Componente</td>
+                   <td>Elimina Componente</td>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($this->elencocomponente as $componente) :?>
+
+              <tr>
+                  <td><?php echo $componente['marca']?></td>
+                  <td><?php echo $componente['modello']?></td>
+
+                  <td>
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "tecnico",
+                          "action" => "visualizzacomponente",
+                          "idcomponente"=> $componente['idcomponente']),
+                          "default",true)
+                      ?>">
+                          <button type="button" class="btn btn-success">Visualizza</button>
+                      </a>
+                  </td>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "modificacomponente",
+                          "idcomponente"=> $componente['idcomponente']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-primary">Modifica</button>
+                          </a>
+                  </td>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "eliminacomponente",
+                          "idcomponente"=> $componente['idcomponente']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-danger">Elimina</button>
+                      </a>
+                  </td>
+              </tr>
+              <?php endforeach ?>
+              </tbody>
+
+          </table>
+          </div>
+          <a href="<?php echo $this->url(array(
+              "controller" => "admin",
+              "action" => "inseriscicomponente"),
+              "default",true)
+          ?>"><button type="button" class="btn btn-success">Inserisci un nuovo componente</button></a>
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>

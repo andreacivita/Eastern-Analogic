@@ -1,0 +1,73 @@
+
+<script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script>
+<script src="<?php echo $this->baseUrl('js/mappa-centri.js'); ?>"></script>
+<script>
+    <?php echo $this->location; ?>
+    //la funzione mappa è contenuta nello script mappa-centri.js
+    mappa(locations);
+</script>
+<style>
+    #mappa-centri {
+        height:500px;
+        width:100%;
+    }
+    .gm-style-iw * {
+        display: block;
+        width: 100%;
+    }
+    .gm-style-iw h4, .gm-style-iw p {
+        margin: 0;
+        padding: 0;
+    }
+    .gm-style-iw a {
+        color: #4272db;
+    }
+</style>
+
+
+
+
+<!--==============Logo & Menu Bar=================-->
+
+<!--==============Logo & Menu Bar=================-->
+
+
+<!--==============Content Area=================-->
+
+<div class="container">
+    <br><br><br><br>
+  <!--============== Blog ==============-->
+  
+  <div class="row PageHead">
+
+    <div class="col-md-12">
+      <h1>I nostri centri di assistenza</h1>
+      <h3>Trova tutti i nostri centri assistenza!</h3>
+    </div>
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+
+
+          <div id='mappa-centri'></div>
+
+
+    </div>
+
+  </div>
+    <div class="row blog">
+        <div class="col-md-12">
+            <div class="blogpost">
+            <div class="col-md-12">
+                <img src="<?php  echo $this->baseUrl('images/legenda.png'); ?>">
+            </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed--> 

@@ -1,0 +1,178 @@
+<div class="container">
+
+    <div class="row PageHead">
+
+        <div class="col-md-12">
+            <h1>Benvenuto <?php echo $this->nome; ?></h1>
+            <h3>Panoramica delle funzioni disponibili</h3>
+        </div>
+    </div>
+  <div class="row blog">
+    <div class="col-md-12">
+        <div class="blogpost">
+                <!--funzione 1 -->
+            <br><br>
+            <div class="row">
+           <div class="col-md-3">
+                <img src="<?php echo $this->baseUrl('images/icone/centri.png'); ?>" alt="Gestione centri">
+            </div>
+            <div class="col-md-9">
+                <br><br><br><br>
+                <h4>Gestione dei Centri Assistenza</h4>
+                <p style="font-size:1.2em">
+                    Gestisci tutti i centri di assistenza sparsi sul territorio. Puoi gestire sia i centri ufficiali (interni all'azienda) che quelli autorizzati (esterni all'azienda)
+                </p>
+                <p style="font-size:1.2em">
+                    <br>
+                    Ricorda: Puoi accedere alla gestione dei centri cliccando su 'Gestione->Centri' nel menù.
+                    <br><br>
+                    <a href="<?php echo $this->url(array(
+                        'controller' => 'admin',
+                        'action' => 'gestionecentri',),
+                        'default',true);
+                    ?>" role="button" data-toggle="modal" class="btn btn-success">Gestione Centri</a>
+                </p>
+            </div>
+            </div>
+            <!--funzione 2 -->
+            <div class="row">
+                <div class="col-md-9">
+                    <br><br><br><br>
+                    <h4>Gestione degli utenti</h4>
+                    <p style="font-size:1.2em">
+                        Puoi facilmente registrare, modificare o eliminare sia membri dello Staff sia tecnici dei centri assistenza. Inoltre, potrai selezionare il centro di appartenenza del tecnico tra quelli disponibili
+
+                    </p>
+                    <p style="font-size:1.2em">
+                        <br>
+                        <br>
+                        Ricorda: Puoi accedere alla gestione dei centri cliccando su 'Gestione->Utenti' nel menù.
+                        <br>
+                        <br>
+                        <a href="<?php echo $this->url(array(
+                            'controller' => 'admin',
+                            'action' => 'gestioneutenti',),
+                            'default',true);
+                        ?>" role="button" data-toggle="modal" class="btn btn-success">Gestione Utenti</a>
+
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <img src="<?php echo $this->baseUrl('images/icone/utenti.png'); ?>" alt="Gestione utenti">
+                </div>
+            </div>
+            <!--funzione 3 -->
+            <div class="row">
+                <div class="col-md-3">
+                    <img style="" src="<?php echo $this->baseUrl('images/icone/prodotti.png'); ?>" alt="Gestione prodotti">
+                </div>
+                <div class="col-md-9">
+                    <br><br><br><br>
+                    <h4>Gestione dei Prodotti</h4>
+                    <p style="font-size:1.2em">
+                        Attraverso questa sezione puoi inserire, modificare o cancellare i prodotti del catalogo. Inoltre puoi aggiornare la scheda del prodotto, la lista dei componenti e associare nuovi problemi.
+
+                    </p>
+                    <p style="font-size:1.2em">
+                        <br>
+                        Ricorda: Puoi accedere alla gestione dei prodotti cliccando su 'Gestione->Prodotti' nel menù.
+                        <br>
+                        <br>
+                        <a href="<?php echo $this->url(array(
+                            'controller' => 'staff',
+                            'action' => 'gestioneprodotti',),
+                            'default',true);
+                        ?>" role="button" data-toggle="modal" class="btn btn-success">Gestione Prodotti</a>
+                    </p>
+                </div>
+            </div>
+            <!-- Funzione 4 -->
+            <div class="row">
+                <div class="col-md-9">
+                    <br><br><br><br>
+                    <h4>Gestione dei Componenti</h4>
+                    <p style="font-size:1.2em">
+                        Attraverso questa sezione puoi inserire, modificare o cancellare i componenti dei prodotti del catalogo.
+                    </p>
+                    <p style="font-size:1.2em">
+                        <br>
+                        Ricorda: Puoi accedere alla gestione dei componenti cliccando su 'Gestione->Componenti' nel menù.
+                        <br>
+                        <br>
+                        <a href="<?php echo $this->url(array(
+                            'controller' => 'admin',
+                            'action' => 'gestionecomponenti',),
+                            'default',true);
+                        ?>" role="button" data-toggle="modal" class="btn btn-success">Gestione Componenti</a>
+
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <img style="" src="<?php echo $this->baseUrl('images/icone/componenti.png'); ?>" alt="Gestione componenti">
+                </div>
+            </div>
+
+            <!-- Funzione 5 -->
+            <div class="row">
+                <div class="col-md-3">
+                    <img style="" src="<?php echo $this->baseUrl('images/icone/faq.png'); ?>" alt="Gestione faq">
+                </div>
+                <div class="col-md-9">
+                    <br><br><br><br>
+                    <h4>Gestione delle Faq</h4>
+                    <p style="font-size:1.2em">
+                       Gestisci l'elenco delle FAQ. Puoi inserire nuove Faq, modificarle oppure eliminarle.
+                    </p>
+                    <p style="font-size:1.2em">
+                        <br>
+                        Ricorda: Puoi accedere alla gestione delle faq cliccando su 'Gestione->Faq' nel menù.
+                        <br>
+                        <br>
+                        <a href="<?php echo $this->url(array(
+                            'controller' => 'admin',
+                            'action' => 'gestionefaq',),
+                            'default',true);
+                        ?>" role="button" data-toggle="modal" class="btn btn-success">Gestione Faq</a>
+                    </p>
+                </div>
+            </div>
+            <!-- Funzione 6 -->
+            <div class="row">
+                <div class="col-md-9">
+                    <br><br><br><br>
+                    <h4>Gestione dei Malfunzionamenti</h4>
+                    <p style="font-size:1.2em">
+                        Gestisci tutti i malfunzionamenti riscontrati.
+                    </p>
+                    <p style="font-size:1.2em">
+                        <br>
+                        Ricorda: Puoi accedere alla gestione dei componenti cliccando su 'Gestione->Problemi' nel menù.
+                        <br>
+                        <br>
+                        <a href="<?php echo $this->url(array(
+                            'controller' => 'staff',
+                            'action' => 'gestioneproblemi',),
+                            'default',true);
+                        ?>" role="button" data-toggle="modal" class="btn btn-success">Gestione Malfunzionamenti</a>
+
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <img style="" src="<?php echo $this->baseUrl('images/icone/problemi.png'); ?>" alt="Gestione componenti">
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>

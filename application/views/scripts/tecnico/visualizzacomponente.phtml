@@ -1,0 +1,49 @@
+<?php
+$authService = new Application_Service_Auth();
+$ruolo="guest";
+if(Zend_Auth::getInstance()->hasIdentity())
+{
+$array=$authService->getIdentity()->toArray();
+$ruolo= $array[0]['ruolo'];
+}
+?>
+
+<div class="container"> 
+  
+
+  
+  <div class="row PageHead">
+
+    <div class="col-md-12">
+
+    </div>
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+
+          <?php $componenti=$this->componente;
+          $componente=$componenti[0];
+
+          $url="images/componenti/".$componente['foto']; ?>
+
+        <h1 class="title" style="text-transform:uppercase; text-align:center;"><?php echo $componente['marca'] . " " . $componente['modello']?></h1>
+          <div class="col-md-6">
+        <div style="width: 300px; height:250px;">
+            <img src="<?php echo $this->baseUrl($url); ?>" alt="foto del prodotto">
+        </div>
+              </div>
+        <br>
+        <br>
+
+        <p>
+        <?php echo $componente['descrizione']; ?>
+        </p>
+      </div>
+     </div>
+    </div>
+</div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->

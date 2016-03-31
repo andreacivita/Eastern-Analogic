@@ -1,0 +1,80 @@
+<div class="container">
+
+  <div class="row PageHead">
+
+
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+        <h1 style="text-align:center;">Associazione dei malfunzionamenti al prodotto <?php echo ucfirst($this->modello);?></h1>
+          <br>
+        <p style="text-align:center; font-size:1.2em">Attraverso questo pannello puoi visualizzare tutti i malfunzionamenti relativi ad un prodotto.
+        Puoi associare nuovi malfunzionamenti o eliminare l'associazione.</p>
+          <div class="col-md-3">
+              <br>
+              <br>
+              <h3 style="text-align:center;">Associa un nuovo malfunzionamento</h3>
+              <br><br>
+
+              <?php echo $this->elencoproblemi; ?>
+          </div>
+          <div class="col-md-9">
+              <br>
+              <br>
+              <h3 style="text-align:center;"> Elenco dei malfunzionamenti associati</h3>
+              <br>
+              <br>
+              <table class="table">
+
+                  <thead>
+                  <tr>
+                      <td>Problema</td>
+
+                      <td>Elimina problema</td>
+                  </tr>
+                  </thead>
+                  <?php foreach ($this->elencoassociazioni as $item) :;?>
+                  <tbody>
+
+
+                      <tr>
+                          <td><?php
+                               echo $item['problema'];
+                              ?></td>
+
+                          <td>
+                              <a href="<?php echo $this->url(array(
+                                  "controller" => "staff",
+                                  "action" => "eliminaassociazione",
+                                  "idassociazione"=> $item['idassociazione'],
+                                  "idprodotto" => $item['idprodotto']),
+
+                                  "default",true)
+                              ?>">
+                                  <button type="button" class="btn btn-danger">Elimina</button>
+                              </a>
+                          </td>
+                      </tr>
+                      <?php endforeach ?>
+                  </tbody>
+
+              </table>
+          </div>
+
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <?php echo $this->headTitle();?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=icon href="<?php echo $this->baseUrl('images/ea-favicon.png'); ?>">
+    <link href="<?php echo $this->baseUrl('css/bootstrap.min.css'); ?>" rel="stylesheet">
+<!--==============GOOGLE FONT - OPEN SANS=================--><link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl('css/faq/reset.css'); ?>"> <!-- CSS reset -->
+    <link rel="stylesheet" href="<?php echo $this->baseUrl('css/faq/faqstile.css'); ?>"> <!-- Resource style -->
+    <link rel="stylesheet" href="<?php echo $this->baseUrl('css/mappe/mappe.css'); ?>"> <!-- Resource style -->
+    <script src="<?php echo $this->baseUrl('js/faq/jquery.mobile.custom.min.js'); ?>"></script> <!-- Modernizr -->
+    <script src="<?php echo $this->baseUrl('js/faq/jquery-2.1.1.js'); ?>"></script> <!-- Modernizr -->
+    <script src="<?php echo $this->baseUrl('js/faq/modernizr.js'); ?>"></script> <!-- Modernizr -->
+    <script src="<?php echo $this->baseUrl('js/faq/main.js'); ?>"></script> <!-- Resource jQuery -->
+
+
+<!--==============FAQ ELEMENT===========================-->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    <script src="<?php echo $this->baseUrl('js/contact_form.js'); ?>"></script>
+
+    <!--==============MAIN CSS FOR COMING SOON PAGE=================-->
+
+    <link href="<?php echo $this->baseUrl('css/hosting.css'); ?>" rel="stylesheet" media="all">
+    <link href="<?php echo $this->baseUrl('css/table.css'); ?>" rel="stylesheet" media="all">
+
+    <!--==============Mordernizr =================-->
+
+    <script src="<?php echo $this->baseUrl('js/modernizr.js'); ?>"></script>
+
+    <!--===================FLEX SLIDER STARTS=======================-->
+
+    <link rel="stylesheet" href="<?php echo $this->baseUrl('css/flexslider.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo $this->baseUrl('css/error.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo $this->baseUrl('css/alert.css'); ?>" />
+
+    <script src="<?php echo $this->baseUrl('js/jquery-1.9.0.min.js'); ?>"></script>
+    <script src="<?php echo $this->baseUrl('js/jquery.flexslider.js'); ?>"></script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                useCSS: Modernizr.touch
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+<!--==============Logo & Menu Bar=================-->
+<?php
+//controllo se esiste un ruolo
+$authService = new Application_Service_Auth();
+$ruolo="guest";
+if(Zend_Auth::getInstance()->hasIdentity())
+{
+    $array=$authService->getIdentity()->toArray();
+    $ruolo= $array[0]['ruolo'];
+}
+$login="Login";
+$logout="Logout";
+$loginurl=$this->url(array(
+    'controller' => 'public',
+    'action' => 'login',),
+    'default',true);
+$logouturl=$this->url(array(
+    'controller' => 'user',
+    'action' => 'logout',),
+    'default',true);
+
+
+?>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand" href="<?php echo $this->url(array(
+                'controller' => 'public',
+                'action' => 'index',),
+                'default',true);
+            ?>"> <img src="<?php echo $this->baseUrl('images/ea-logo.png'); ?>" alt="logo"></a> </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="<?php if ($this->active=="index")
+                    echo "active"; ?>"><a href="<?php echo $this->url(array(
+                        'controller' => 'public',
+                        'action' => 'index',),
+                        'default',true);
+                    ?>">HOME</a></li>
+
+                <li class="<?php if ($this->active=="about")
+                        echo "active"; ?> hidden-sm"><a href="<?php echo $this->url(array(
+                        'controller' => 'public',
+                        'action' => 'about',),
+                        'default',true);
+                    ?>">Chi Siamo</a></li>
+
+                <li class="<?php if ($this->active=="prodotti")
+                    echo "active"; ?>"><a href="<?php echo $this->url(array(
+                        'controller' => 'public',
+                        'action' => 'elencoprodotti',),
+                        'default',true);
+                    ?>">Prodotti</a></li>
+
+                <li class="<?php if ($this->active=="centri")
+                    echo "active"; ?>"><a href="<?php echo $this->url(array(
+                        'controller' => 'public',
+                        'action' => 'centri',),
+                        'default',true);
+                    ?>">Centri Assistenza</a></li>
+
+                <li class="<?php if ($this->active=="faq")
+                    echo "active"; ?>"><a href="<?php echo $this->url(array(
+                        'controller' => 'public',
+                        'action' => 'faq',),
+                        'default',true);
+                    ?>">FAQ</a></li>
+
+                <li class="<?php if ($this->active=="contatti")
+                    echo "active"; ?>"><a href="<?php echo $this->url(array(
+                        'controller' => 'public',
+                        'action' => 'contatti',),
+                        'default',true);
+                    ?>">Contatti</a></li>
+                <?php if ($ruolo == 'staff' || $ruolo == 'admin') { ?>
+                    <li class="<?php if ($this->active == "gestione")
+                        echo "active"; ?> dropdown"><a href="<?php echo $this->url(array(
+                            'controller' => 'admin',
+                            'action' => 'index',),
+                            'default', true);
+                        ?>" class="dropdown-toggle" data-toggle="dropdown">Gestione <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <?php if ($ruolo == "staff" || $ruolo == "admin") : ?>
+                                <li><a href="<?php echo $this->url(array(
+                                        'controller' => 'staff',
+                                        'action' => 'gestioneprodotti',),
+                                        'default', true);
+                                    ?>">Gestione dei Prodotti</a></li>
+                                <li><a href="<?php echo $this->url(array(
+                                        'controller' => 'staff',
+                                        'action' => 'gestioneproblemi',),
+                                        'default', true);
+                                    ?>">Gestione dei Malfunzionamenti</a></li>
+                            <?php endif ?>
+                            <?php if ($ruolo=='admin') : ?>
+                                <li><a href="<?php echo $this->url(array(
+                                        'controller' => 'admin',
+                                        'action' => 'gestionecomponenti',),
+                                        'default', true);
+                                    ?>">Gestione dei Componenti</a></li>
+                            <li><a href="<?php echo $this->url(array(
+                                    'controller' => 'admin',
+                                    'action' => 'gestionecentri',),
+                                    'default', true);
+                                ?>">Gestione dei Centri</a></li>
+                            <li><a href="<?php echo $this->url(array(
+                                    'controller' => 'admin',
+                                    'action' => 'gestioneutenti',),
+                                    'default', true);
+                                ?>">Gestione degli Utenti</a></li>
+
+
+                            <li><a href="<?php echo $this->url(array(
+                                    'controller' => 'admin',
+                                    'action' => 'gestionefaq',),
+                                    'default', true);
+                                ?>">Gestione delle Faq</a></li>
+
+                            <?php endif ?>
+                        </ul>
+                    </li>
+                <?php
+                }
+
+                ?>
+                <li><a href="<?php if ($ruolo=='guest') { echo $loginurl; } else { echo $logouturl; }?>" role="button"  class="btn btn-success"><?php if ($ruolo=='guest') { echo $login; } else { echo $logout; }?></a></li>      </ul>
+            </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+
+    </div>
+</nav>
+
+
+
+<?php echo $this->layout()->content; //mostro il concenuto ?>
+
+
+
+
+
+
+
+<div class="footer">
+    <div class="container">
+        <div class="row footerlinks">
+            <div class="col-sm-4 col-md-4">
+                <p>Chiamaci</p>
+                <ul>
+                    <li> +39 071.220.1</li>
+                    <li>+39 071.220.2324</li>
+                </ul>
+            </div>
+
+            <div class="col-sm-4 col-md-4">
+                <p>Eastern Analogic</p>
+                <ul>
+                    <li> <a href="<?php echo $this->url(array(
+                            'controller' => 'public',
+                            'action' => 'about',),
+                            'default',true);
+                        ?>">Chi siamo</a></li>
+                    <li><a href="<?php echo $this->url(array(
+                            'controller' => 'public',
+                            'action' => 'centri',),
+                            'default',true);
+                        ?>">Centri assistenza</a></li>
+                    <li><a href="<?php echo $this->url(array(
+                            'controller' => 'public',
+                            'action' => 'contatti',),
+                            'default',true);
+                        ?>">Contatti</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <p>EMAIL</p>
+                <ul>
+                    <li><a href="mailto:support@mail.in" target="_blank">supporto@easternanalogic.com</a></li>
+                    <li><a href="mailto:mail@mail.in" target="_blank">vendite@easternanalogic.com</a></li>
+                </ul>
+            </div>
+
+
+            <div class="row copyright">
+                <div class="pull-right"><img src="<?php echo $this->baseUrl('images/logo-footer.png'); ?>" alt="logo"></div>
+                <p>Eastern Analogic &copy; 2015.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="<?php echo $this->baseUrl('js/bootstrap.min.js'); ?>"></script>
+    <!--==============BOOTSTRAP JS=================-->
+
+
+    </body>
+</html>

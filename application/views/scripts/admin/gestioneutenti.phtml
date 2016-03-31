@@ -1,0 +1,105 @@
+<div class="container">
+
+  <div class="row PageHead">
+
+
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+        <h1 style="text-align:center;"> Gestione degli Utenti </h1>
+          <br>
+          <br>
+          <h4 style="text-align:center;">Nota bene: Il nome del centro assistenza è specificato esclusivamente per i tecnici</h4>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                   <td>Nome</td>
+                   <td>Cognome</td>
+                   <td>Email</td>
+
+                   <td>Ruolo</td>
+                   <td>Centro Assistenza</td>
+                   <td>Modifica Utente</td>
+                   <td>Elimina Utente</td>
+                </tr>
+              </thead>
+              <tbody>
+              <?php
+              $array=$this->elencocentri;
+              $max = max(array_keys($array));
+              $c=0;
+              foreach ($this->elencoutenti as $utente) :
+                  $centro=$array[$c];
+
+
+                  ?>
+
+              <tr>
+                  <td><?php echo $utente['nome']?></td>
+                  <td><?php echo $utente['cognome']?></td>
+                  <td><?php echo $utente['email']?></td>
+
+                  <td><?php echo $utente['ruolo']?></td>
+                  <td><?php if ($utente['ruolo']=="tecnico"){
+
+                          echo $centro['nomecentro'];
+
+                      }
+                      $c++;
+                           ?></td>
+
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "modificautente",
+                          "idutente"=> $utente['idutente']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-primary">Modifica </button>
+                          </a>
+                  </td>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "eliminautente",
+                          "idutente"=> $utente['idutente']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-danger">Elimina </button>
+                      </a>
+                  </td>
+              </tr>
+              <?php
+                  if ($c>$max)
+                      $c=0;
+              endforeach ?>
+              </tbody>
+
+          </table>
+          <a href="<?php echo $this->url(array(
+              "controller" => "admin",
+              "action" => "inserisciutente"),
+              "default",true)
+          ?>"><button type="button" class="btn btn-success">Inserisci un nuovo utente</button></a>
+            </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<div class="container">
+
+  <div class="row PageHead">
+
+
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+        <h1 style="text-align:center;"> Gestione dei malfunzionamenti</h1>
+          <br>
+          <br>
+
+          <br>
+          <br>
+          <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                   <td>Malfunzionamento</td>
+                   <td>Soluzione</td>
+                    <td>Modifica</td>
+                   <td>Elimina</td>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($this->elencoproblemi as $problemi) :?>
+
+              <tr>
+                  <td><?php echo $problemi['problema']?></td>
+                  <td><?php echo $problemi['soluzione']?></td>
+
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "staff",
+                          "action" => "modificaproblema",
+                          "idproblema"=>$problemi['idproblema']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-primary">Modifica </button>
+                          </a>
+                  </td>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "staff",
+                          "action" => "eliminaproblema",
+                          "idproblema"=> $problemi['idproblema']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-danger">Elimina </button>
+                      </a>
+                  </td>
+              </tr>
+              <?php endforeach ?>
+              </tbody>
+
+          </table>
+          </div>
+          <a href="<?php echo $this->url(array(
+              "controller" => "staff",
+              "action" => "inserisciproblema"),
+              "default",true)
+          ?>"><button type="button" class="btn btn-success">Inserisci un nuovo malfunzionamento</button></a>
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>

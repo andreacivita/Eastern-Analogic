@@ -1,0 +1,82 @@
+<div class="container">
+
+  <div class="row PageHead">
+
+
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+        <h1 style="text-align:center;"> Gestione dei Centri </h1>
+          <br>
+          <br>
+
+          <br>
+          <br>
+          <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                   <td>Nome del Centro</td>
+                   <td>Telefono</td>
+                   <td>Email</td>
+                   <td>Centro interno</td>
+                   <td>Modifica Centro</td>
+                   <td>Elimina Centro</td>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($this->elencocentri as $centro) :?>
+
+              <tr>
+                  <td><?php echo $centro['nome']?></td>
+                  <td><?php echo $centro['telefono']?></td>
+                  <td><?php echo $centro['email']?></td>
+                  <td><?php echo $centro['interno']?></td>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "modificacentro",
+                          "idcentro"=> $centro['idcentro']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-primary">Modifica </button>
+                          </a>
+                  </td>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "eliminacentro",
+                          "idcentro"=> $centro['idcentro']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-danger">Elimina </button>
+                      </a>
+                  </td>
+              </tr>
+              <?php endforeach ?>
+              </tbody>
+
+          </table>
+          </div>
+          <a href="<?php echo $this->url(array(
+              "controller" => "admin",
+              "action" => "inseriscicentro"),
+              "default",true)
+          ?>"><button type="button" class="btn btn-success">Inserisci un nuovo centro</button></a>
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>

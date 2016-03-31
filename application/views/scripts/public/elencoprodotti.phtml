@@ -1,0 +1,49 @@
+
+<div class="container">
+
+    <!--============== Blog ==============-->
+
+    <div class="row PageHead">
+
+        <div class="col-md-12">
+            <h1>I nostri prodotti</h1>
+    <br><br>
+        </div>
+    </div>
+    <div class="row blog">
+        <div class="col-md-12">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <?php echo $this->cercaform;?>
+            </div>
+            <?php foreach ($this->elencoprodotto as $item):?>
+            <div class="col-md-4">
+                <div class="blogpost" style="width:75%;">
+                    <h1 class="title" style="text-transform:capitalize;"><?php echo $item['modello']; ?></h1>
+                    <img src="<?php
+                    $url="images/prodotti/".$item['foto'];
+                    echo $this->baseUrl($url);?>
+
+                    " alt="blog img">
+
+                    <p><a href="
+                    <?php echo $this->url(array(
+                            "controller" => "public",
+                            "action" => "schedaprodotto",
+                            "idprodotto"=> $item['idprodotto']),
+                            "default",true)
+                        ?>
+
+
+                    " role="button" data-toggle="modal" class="btn btn-success">Scheda Tecnica</a></p>
+                </div>
+
+            </div>
+            <?php endforeach ?>
+
+        </div>
+    </div>
+    <!--Blog Closed-->
+
+</div>
+<!--Container Closed-->

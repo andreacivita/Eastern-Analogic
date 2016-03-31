@@ -1,0 +1,79 @@
+<div class="container">
+
+  <div class="row PageHead">
+
+
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+        <h1 style="text-align:center;"> Gestione delle Faq </h1>
+          <br>
+          <br>
+
+          <br>
+          <br>
+          <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                   <td>Domanda</td>
+                   <td>Risposta</td>
+                    <td>Modifica Faq</td>
+                   <td>Elimina Faq</td>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($this->elencofaq as $faq) :?>
+
+              <tr>
+                  <td><?php echo $faq['domanda']?></td>
+                  <td><?php echo $faq['risposta']?></td>
+
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "modificafaq",
+                          "idfaq"=> $faq['idfaq']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-primary">Modifica </button>
+                          </a>
+                  </td>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "eliminafaq",
+                          "idfaq"=> $faq['idfaq']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-danger">Elimina </button>
+                      </a>
+                  </td>
+              </tr>
+              <?php endforeach ?>
+              </tbody>
+
+          </table>
+          </div>
+          <a href="<?php echo $this->url(array(
+              "controller" => "admin",
+              "action" => "inseriscifaq"),
+              "default",true)
+          ?>"><button type="button" class="btn btn-success">Inserisci una nuova faq</button></a>
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>

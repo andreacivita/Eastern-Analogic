@@ -1,0 +1,81 @@
+<?php
+$authService = new Application_Service_Auth();
+$ruolo="guest";
+if(Zend_Auth::getInstance()->hasIdentity())
+{
+$array=$authService->getIdentity()->toArray();
+$ruolo= $array[0]['ruolo'];
+}
+?>
+
+<div class="container"> 
+  
+
+  
+  <div class="row PageHead">
+
+    <div class="col-md-12">
+
+    </div>
+  </div>
+  <div class="row blog">
+    <div class="col-md-9">
+      <div class="blogpost">
+          <?php $prodotto=$this->prodotto;
+          $url="images/prodotti/".$prodotto['foto']; ?>
+
+        <h1 class="title" style="text-transform:uppercase;"><?php echo $prodotto['modello']?></h1>
+        <div style="width: 300px; height:250px;">
+            <img src="<?php echo $this->baseUrl($url); ?>" alt="foto del prodotto" style="width:50px;">
+        </div>
+        <br>
+        <br>
+
+        <p>
+        <?php echo $prodotto['descrizione']; ?>
+        </p>
+      </div>
+        <br>
+
+        <?php if($ruolo!="guest") : ?>
+        <h3>Elenco Problemi</h3>
+        <br>
+      <div class="commentslist">
+        <ul class="media-list">
+          <li class="media">
+              <?php foreach($this->elencoproblemi as $item) : ?>
+            <div class="media-body">
+              <h4 class="media-heading"><?php echo $item['problema'];?></h4>
+              <p><?php echo $item['soluzione'];?></p>
+            </div>
+                  <hr>
+              <?php endforeach ?>
+          </li>
+        </ul>
+      </div>
+
+      <?php endif ?>
+    </div>
+    <div class="col-md-3 sidebar">
+        <?php if($ruolo!="guest"): ?>
+      <h3>Componenti</h3>
+      <ul class="bloglist">
+          <?php foreach ($this->elencocomponenti as $item) :?>
+        <li><a href="<?php echo $item['url']; ?>"> <?php echo $item['nome']; ?></a></li>
+          <?php endforeach ?>
+      </ul>
+        <?php endif ?>
+      <br>
+      <h3>Note Tecniche di buon uso</h3>
+      <p> <?php echo $prodotto['uso']; ?></p>
+      <br>
+        <h3>Installazione</h3>
+        <p>
+            <?php echo $prodotto['installazione']; ?>
+        </p>
+    </div>
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->

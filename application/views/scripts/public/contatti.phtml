@@ -1,0 +1,57 @@
+
+<?php $this->headTitle('Eastern Analogic - Contattaci'); ?>
+<script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script>
+
+<script src="<?php echo $this->baseUrl('js/mappa-contatti.js'); ?>"></script>
+<br><br><br>
+<div class="container" id="contact">
+  <div class="row PageHead">
+    <div class="col-md-12">
+      <h1>Contattaci!</h1>
+      <h3>Rimani in contatto con noi! Siamo pronti ad aiutarti!</h3>
+    </div>
+  </div>
+  <div class="row ContactUs">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4> Ancona </h4>
+          <address>
+          <strong>Eastern Analogic srl (sede legale)</strong><br>
+          Via Breccie Bianche 10<br>
+          Ancona AN 60131<br>
+          Italia<br>
+          <abbr title="Telefono">Telefono:</abbr> +39 071.220.1<br>
+          <br>
+          </address>
+        </div>
+          <div class="col-sm-6">
+              <h4> San Benedetto del Tronto</h4>
+              <address>
+                  <strong>Eastern Analogic srl (sede operativa) </strong><br>
+                  Via del Mare 20<br>
+                  San Benedetto del Tronto AP 63074<br>
+                  Italia<br>
+                  <abbr title="Telefono">Telefono:</abbr>+39 0735.757.677<br>
+                  <br>
+              </address>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mapwrap">
+            <div id='mappa'></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+
+        <?php echo $this->form; ?>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+

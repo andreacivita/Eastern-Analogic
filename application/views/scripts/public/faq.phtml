@@ -1,0 +1,44 @@
+
+<div class="container">
+  
+  <div class="row PageHead">
+
+
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+          <img src="<?php echo $this->baseUrl('images/faq-ea.png'); ?>" alt="blog img">
+          <section class="cd-faq" style="margin-left: -2%; ">
+              <ul class="cd-faq-categories">
+
+              </ul> <!-- cd-faq-categories -->
+
+              <div class="cd-faq-items">
+                  <ul id="basics" class="cd-faq-group">
+                        <?php  foreach ($this->elenco as $elenco) :?>
+                      <li>
+                          <a style="background-color: rgba(175, 175, 175, 0.26);" class="cd-faq-trigger" href="#0"><?php echo $elenco['domanda']; ?>   <span><i class="fa fa-plus"></i></span></a>
+
+                          <div class="cd-faq-content">
+                              <p style="font-size: 1em;"><br><?php echo $elenco['risposta']; ?></p>
+                          </div> <!-- cd-faq-content -->
+                      </li>
+                        <?php endforeach ?>
+
+                  </ul> <!-- cd-faq-group -->
+
+
+              </div> <!-- cd-faq-items -->
+              <a href="#0" class="cd-close-panel">Close</a>
+          </section> <!-- cd-faq -->
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed--> 

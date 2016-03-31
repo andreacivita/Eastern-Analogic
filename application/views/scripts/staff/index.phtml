@@ -1,0 +1,76 @@
+<div class="container">
+
+    <div class="row PageHead">
+
+        <div class="col-md-12">
+            <h1>Benvenuto <?php echo $this->nome; ?></h1>
+            <h3>Panoramica delle funzioni disponibili</h3>
+        </div>
+    </div>
+  <div class="row blog">
+    <div class="col-md-12">
+        <div class="blogpost">
+
+            <!--funzione 1 -->
+            <div class="row">
+                <div class="col-md-3">
+                    <img style="" src="<?php echo $this->baseUrl('images/icone/prodotti.png'); ?>" alt="Gestione prodotti">
+                </div>
+                <div class="col-md-9">
+                    <br><br><br><br>
+                    <h4>Gestione dei Prodotti</h4>
+                    <p style="font-size:1.2em">
+                        Attraverso questa sezione puoi associare nuovi problemi ad un prodotto.
+
+                    </p>
+                    <p style="font-size:1.2em">
+                        <br>
+                        Ricorda: Puoi accedere alla gestione dei prodotti cliccando su 'Gestione->Prodotti' nel menù.
+                        <br>
+                        <br>
+                        <a href="<?php echo $this->url(array(
+                            'controller' => 'staff',
+                            'action' => 'gestioneprodotti',),
+                            'default',true);
+                        ?>" role="button" data-toggle="modal" class="btn btn-success">Gestione Prodotti</a>
+                    </p>
+                </div>
+            </div>
+            <!-- Funzione 6 -->
+            <div class="row">
+                <div class="col-md-9">
+                    <br><br><br><br>
+                    <h4>Gestione dei Malfunzionamenti</h4>
+                    <p style="font-size:1.2em">
+                        Gestisci tutti i malfunzionamenti riscontrati.
+                    </p>
+                    <p style="font-size:1.2em">
+                        <br>
+                        Ricorda: Puoi accedere alla gestione dei componenti cliccando su 'Gestione->Problemi' nel menù.
+                        <br>
+                        <br>
+                        <a href="<?php echo $this->url(array(
+                            'controller' => 'staff',
+                            'action' => 'gestioneproblemi',),
+                            'default',true);
+                        ?>" role="button" data-toggle="modal" class="btn btn-success">Gestione Malfunzionamenti</a>
+
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <img style="" src="<?php echo $this->baseUrl('images/icone/problemi.png'); ?>" alt="Gestione componenti">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>

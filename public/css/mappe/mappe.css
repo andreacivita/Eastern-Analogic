@@ -1,0 +1,33 @@
+
+#mappa-centri {
+    height:600px;
+    width:100%;
+}
+.gm-style-iw * {
+    display: block;
+    width: 100%;
+}
+.gm-style-iw h4, .gm-style-iw p {
+    margin: 0;
+    padding: 0;
+    width:220px;
+}
+.gm-style-iw a {
+    color: #4272db;
+}
+
+ #mappa {
+     height:250px;
+     width:100%;
+ }
+.gm-style-iw * {
+    display: block;
+//width: 100%;
+}
+.gm-style-iw h4, .gm-style-iw p {
+    margin: 0;
+    padding: 0;
+}
+.gm-style-iw a {
+    color: #4272db;
+}

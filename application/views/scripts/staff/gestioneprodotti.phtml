@@ -1,0 +1,138 @@
+<div class="container">
+
+  <div class="row PageHead">
+
+
+  </div>
+  <div class="row blog">
+    <div class="col-md-12">
+      <div class="blogpost">
+        <h1 style="text-align:center;"> Gestione dei Prodotti </h1>
+          <br>
+          <br>
+
+          <br>
+          <br>
+          <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                   <td>Nome del Prodotto</td>
+                    <td>Visualizza Scheda</td>
+                    <td>Associa Problemi</td>
+                    <?php
+                    $authService = new Application_Service_Auth();
+                    $ruolo="guest";
+                    if(Zend_Auth::getInstance()->hasIdentity())
+                    {
+                        $array=$authService->getIdentity()->toArray();
+                        $ruolo= $array[0]['ruolo'];
+                    }
+                    if ($ruolo=="admin") {
+                    ?>
+                   <td>Associa Componenti</td>
+                   <td>Modifica Prodotto</td>
+                   <td>Elimina Prodotto</td>
+                    <?php } ?>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($this->elencoprodotto as $prodotto) :?>
+
+              <tr>
+                  <td style="text-transform:capitalize"><?php echo $prodotto['modello']?></td>
+
+
+
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "public",
+                          "action" => "schedaprodotto",
+                          "idprodotto"=> $prodotto['idprodotto']),
+                          "default",true)
+                      ?>">
+                          <button type="button" class="btn btn-success">Visualizza Scheda </button>
+                      </a>
+                  </td>
+
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "staff",
+                          "action" => "associaproblemi",
+                          "idprodotto"=> $prodotto['idprodotto']),
+                          "default",true)
+                      ?>">
+                          <button type="button" class="btn btn-danger">Associa Problemi </button>
+                      </a>
+                  </td>
+                  <?php
+                  if ($ruolo=="admin") :
+                  ?>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "associacomponenti",
+                          "idprodotto"=> $prodotto['idprodotto']),
+                          "default",true)
+                      ?>">
+                          <button type="button" class="btn btn-warning">Associa componenti </button>
+                      </a>
+                  </td>
+                      <?php endif ?>
+                  <?php
+                  if ($ruolo=="admin") :
+                  ?>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "modificaprodotto",
+                          "idprodotto"=> $prodotto['idprodotto']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-primary">Modifica </button>
+                          </a>
+                  </td>
+                  <?php endif ?>
+                  <?php
+                  if ($ruolo=="admin") :
+                  ?>
+                  <td style="text-align:center;">
+                      <a href="<?php echo $this->url(array(
+                          "controller" => "admin",
+                          "action" => "eliminaprodotto",
+                          "idprodotto"=> $prodotto['idprodotto']),
+                          "default",true)
+                      ?>">
+                      <button type="button" class="btn btn-danger">Elimina </button>
+                      </a>
+                  </td>
+                  <?php endif ?>
+              </tr>
+              <?php endforeach ?>
+              </tbody>
+
+          </table>
+          </div>
+          <?php
+            if ($ruolo=="admin"){ ?>
+          <a href="<?php echo $this->url(array(
+              "controller" => "admin",
+              "action" => "inserisciprodotto"),
+              "default",true)
+          ?>"><button type="button" class="btn btn-success">Inserisci un nuovo prodotto</button></a>
+                <?php } ?>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <!--Blog Closed--> 
+  
+</div>
+<!--Container Closed-->
+
+</body>
+</html>
