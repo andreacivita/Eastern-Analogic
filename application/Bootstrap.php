@@ -27,7 +27,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     }
     protected function _initDbParms()
     {
-        include_once ('../../include/connect.php');
+        include_once ('include/connect.php');
         $db = new Zend_Db_Adapter_Pdo_Mysql(array(
             'host'     => $HOST,
             'username' => $USER,
