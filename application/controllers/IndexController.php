@@ -3,12 +3,10 @@
 /**
  * Developer:   Andrea Civita
  * Web-site:    http://www.andreacivita.it
- * GitHub:      https://github.com/andreacivita/
+ * GitHub:      https://github.com/andreacivita/.
  */
-
 class IndexController extends Zend_Controller_Action
 {
-
     public function init()
     {
         /* Initialize action controller here */
@@ -17,9 +15,6 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
-        $this->_helper->redirector('index','public');
+        $this->_helper->redirector('index', 'public');
     }
-
-
 }
-
