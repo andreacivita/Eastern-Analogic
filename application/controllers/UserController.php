@@ -3,9 +3,8 @@
 /**
  * Developer:   Andrea Civita
  * Web-site:    http://www.andreacivita.it
- * GitHub:      https://github.com/andreacivita/
+ * GitHub:      https://github.com/andreacivita/.
  */
-
 class UserController extends Zend_Controller_Action
 {
     protected $_authService;
@@ -25,22 +24,23 @@ class UserController extends Zend_Controller_Action
 
         //questo script converte il risultato della getIdentity in un array, e lo memorizza dentro array. Il risultato è un array
         //in cui al primo posto (indice 0) è memorizzato il vettore che contiene le informazioni dell'utente loggato.
-        $array=$this->_authService->getIdentity()->toArray();
-        $ruolo= $array[0]['ruolo']; //In questo modo estraggo il ruolo dell'utente loggato dall'array e lo memorizzo in una variabile
+        $array = $this->_authService->getIdentity()->toArray();
+        $ruolo = $array[0]['ruolo']; //In questo modo estraggo il ruolo dell'utente loggato dall'array e lo memorizzo in una variabile
         //controllo il ruolo ed eseguo il redirect
-        if ($ruolo == 'admin')
+        if ($ruolo == 'admin') {
             $this->_helper->redirector('index', 'admin');
-        if ($ruolo == 'staff')
+        }
+        if ($ruolo == 'staff') {
             $this->_helper->redirector('index', 'staff');
-        if ($ruolo == 'tecnico')
+        }
+        if ($ruolo == 'tecnico') {
             $this->_helper->redirector('index', 'public');
+        }
         // se per qualche motivo il ruolo non combacia con nessuno dei precedenti ma l'utente è comunque riuscito ad accedere
         // all'UserController, allora lo reindirizzo verso il controller public.
 
         $this->_helper->redirector('index', 'public');
-
     }
-
 
     public function logoutAction()
     {
@@ -48,9 +48,4 @@ class UserController extends Zend_Controller_Action
         Zend_Auth::getInstance()->clearIdentity();
         $this->_helper->redirector('index', 'public');
     }
-
-
 }
-
-
-

@@ -3,41 +3,34 @@
 /**
  * Developer:   Andrea Civita
  * Web-site:    http://www.andreacivita.it
- * GitHub:      https://github.com/andreacivita/
+ * GitHub:      https://github.com/andreacivita/.
  */
-
 class Application_Form_Cercaprodotto extends Zend_Form
 {
-
     public function init()
     {
         $this->setMethod('post');
         $this->setAction('authenticate');
         $this->setName('cerca'); //setta name e id del form
 
-        $this->addElement('text', 'cerca', array(
-            'filters'    => array('StringTrim'),
+        $this->addElement('text', 'cerca', [
+            'filters'    => ['StringTrim'],
             'required'   => true,
             'class'      => 'form-control',
 
             'placeholder'=> 'Cerca',
 
-        ));
+        ]);
 
+        $this->addElement('submit', 'Cerca', [
+            'class' => 'btn btn-success',
+        ]);
 
-        $this->addElement('submit', 'Cerca', array(
-            'class' => 'btn btn-success'
-        ));
-
-        $this->setDecorators(array(
+        $this->setDecorators([
             'FormElements',
-            array('HtmlTag', array('tag' => 'table', 'class' => 'zend_form')),
-            array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-            'Form'
-        ));
-
+            ['HtmlTag', ['tag' => 'table', 'class' => 'zend_form']],
+            ['Description', ['placement' => 'prepend', 'class' => 'formerror']],
+            'Form',
+        ]);
     }
-
-
 }
-
